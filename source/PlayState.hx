@@ -320,7 +320,7 @@ class PlayState extends MusicBeatState
 					curStage = 'spooky';
 				case 'pico' | 'blammed' | 'philly' | 'philly-nice':
 					curStage = 'philly';
-				case 'milf' | 'satin-panties' | 'high':
+				case 'smoking':
 					curStage = 'cgstage';
 				case 'cocoa' | 'eggnog':
 					curStage = 'mall';
