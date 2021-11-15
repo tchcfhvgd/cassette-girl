@@ -1,25 +1,9 @@
 {
-<<<<<<< Updated upstream
-	"songs": [
-		[
-			"smoking",
-			"cg",
-			[ 146, 113, 253 ]
-		],
-		[
-			"song2",
-			"cg",
-			[ 146, 113, 253 ]
-		]
-	],
-
-=======
 	"storyName": "MOMMY MUST MURDER",
 	"hideFreeplay": false,
 	"weekBackground": "cgstage",
 	"weekBefore": "",
 	"startUnlocked": true,
->>>>>>> Stashed changes
 	"weekCharacters": [
 		"mom",
 		"bf",
@@ -30,13 +14,22 @@
 			"smoking",
 			"cg",
 			[
-				252,
-				150,
-				215
+				146,
+				113,
+				253
 			]
 		],
 		[
-			"song 2",
+			"rewind",
+			"cg",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"song 3",
 			"cg",
 			[
 				146,
