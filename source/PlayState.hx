@@ -320,7 +320,7 @@ class PlayState extends MusicBeatState
 					curStage = 'spooky';
 				case 'pico' | 'blammed' | 'philly' | 'philly-nice':
 					curStage = 'philly';
-				case 'smoking' | 'song2'://dont forget to change this later
+				case 'ukiyo' | 'earworm' | 'machina' | 'soda-groove':
 					curStage = 'cgstage';
 				case 'cocoa' | 'eggnog':
 					curStage = 'mall';
@@ -1277,7 +1277,7 @@ class PlayState extends MusicBeatState
 
 		if (curStage == 'cgstage')
 			{
-				FlxTween.tween(c1, {alpha: 0.45}, 1, {
+				FlxTween.tween(c1, {alpha: 0.1}, 1, {
 					startDelay: 0.1,
 					ease: FlxEase.linear});
 			}
