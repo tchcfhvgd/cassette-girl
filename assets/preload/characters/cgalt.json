@@ -8,7 +8,7 @@
 			],
 			"anim": "idle",
 			"fps": 24,
-			"name": "cassettegirl idle",
+			"name": "cassettegirl idle alt",
 			"indices": []
 		},
 		{
@@ -19,7 +19,7 @@
 			],
 			"anim": "singLEFT",
 			"fps": 24,
-			"name": "cassettegirl left",
+			"name": "cassettegirl left alt",
 			"indices": []
 		},
 		{
@@ -30,7 +30,7 @@
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "cassettegirl right",
+			"name": "cassettegirl right alt",
 			"indices": []
 		},
 		{
@@ -41,7 +41,7 @@
 			],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "cassettegirl down",
+			"name": "cassettegirl down alt",
 			"indices": []
 		},
 		{
@@ -52,12 +52,12 @@
 			],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "cassettegirl up",
+			"name": "cassettegirl up alt",
 			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/cassettegirl",
+	"image": "characters/cassettegirl-alt",
 	"position": [
 		0,
 		0

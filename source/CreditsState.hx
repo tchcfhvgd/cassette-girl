@@ -13,13 +13,13 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import lime.utils.Assets;
-
+import flixel.addons.display.FlxBackdrop;
 using StringTools;
 
 class CreditsState extends MusicBeatState
 {
 	var curSelected:Int = 1;
-
+	var backdrops:FlxBackdrop = new FlxBackdrop(Paths.image('backdrop2'), 0.2, 0.2, true, true);
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private var iconArray:Array<AttachedSprite> = [];
 
@@ -28,7 +28,7 @@ class CreditsState extends MusicBeatState
 		['Mong',		'MONG',		'Artist and Animator',					'https://twitter.com/spacedoggo_art',	0xFF6699ff],
 		['Saruky',			'SARUKY',		'Composer',				'https://twitter.com/Saruky',		0xFFf44771],
 		['Chromaatical',		'Chorma',		'Charter',					'https://twitter.com/Chromaatical',	0xFFcc6666],
-		['Shadowfi',			'SHADOWFI',		'Programmer',				' https://twitter.com/Shadowfi1385',		0xFFc356ff],
+		['Shadowfi',			'SHADOWFI',		'Programmer',				'https://twitter.com/Shadowfi1385',		0xFFc356ff],
 		[''],
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	0xFFFFDD33],
@@ -39,7 +39,6 @@ class CreditsState extends MusicBeatState
 		['PolybiusProxy',		'polybiusproxy',	'.MP4 Video Loader Extension',						'https://twitter.com/polybiusproxy',	0xFFE01F32],
 		['gedehari',			'gedehari',			'Chart Editor\'s Sound Waveform base',				'https://twitter.com/gedehari',			0xFFFF9300],
 		['Keoiki',				'keoiki',			'Note Splash Animations',							'https://twitter.com/Keoiki_',			0xFFFFFFFF],
-		['SandPlanet',			'sandplanet',		'Mascot\'s Owner\nMain Supporter of the Engine',		'https://twitter.com/SandPlanetNG',		0xFFD10616],
 		['bubba',				'bubba',		'Guest Composer for "Hot Dilf"',	'https://www.youtube.com/channel/UCxQTnLmv0OAS63yzk9pVfaw',	0xFF61536A],
 		[''],
 		["Funkin' Crew"],
@@ -63,6 +62,9 @@ class CreditsState extends MusicBeatState
 
 		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		add(bg);
+
+		add(backdrops);
+		backdrops.scrollFactor.set(0, 0.07);
 
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
@@ -110,7 +112,9 @@ class CreditsState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
-
+		backdrops.x+=2;
+		backdrops.y +=2;
+		backdrops.color = bg.color;
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
 

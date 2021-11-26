@@ -14,6 +14,7 @@ import flixel.util.FlxColor;
 import lime.utils.Assets;
 import flixel.FlxSubState;
 import flash.text.TextField;
+import flixel.addons.display.FlxBackdrop;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxSave;
@@ -23,6 +24,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
+import flixel.util.FlxColor;
 import Controls;
 
 using StringTools;
@@ -34,6 +36,7 @@ class OptionsState extends MusicBeatState
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
+	var backdrops:FlxBackdrop = new FlxBackdrop(Paths.image('backdrop2'), 0.2, 0.2, true, true);
 
 	override function create() {
 		#if desktop
@@ -47,6 +50,9 @@ class OptionsState extends MusicBeatState
 		menuBG.screenCenter();
 		menuBG.antialiasing = ClientPrefs.globalAntialiasing;
 		add(menuBG);
+
+		add(backdrops);
+		backdrops.scrollFactor.set(0, 0.07);
 
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
@@ -71,7 +77,9 @@ class OptionsState extends MusicBeatState
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
-
+		backdrops.x-=2;
+		backdrops.y -=2;
+		backdrops.color = FlxColor.RED;
 		if (controls.UI_UP_P) {
 			changeSelection(-1);
 		}
@@ -716,7 +724,6 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'GRAPHICS',
 		'Low Quality',
 		'Anti-Aliasing',
-		'Persistent Cached Data',
 		#if !html5
 		'Framerate', //Apparently 120FPS isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
 		#end
@@ -726,8 +733,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Ghost Tapping',
 		'Note Delay',
 		'Note Splashes',
+		'Hue Change',
 		'Hide HUD',
-		'Hide Song Length',
 		'Flashing Lights',
 		'Camera Zooms'
 		#if !mobile
@@ -887,6 +894,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 					case 'Note Splashes':
 						ClientPrefs.noteSplashes = !ClientPrefs.noteSplashes;
 
+					case 'Hue Change':
+						ClientPrefs.huechange = !ClientPrefs.huechange;
+
 					case 'Flashing Lights':
 						ClientPrefs.flashing = !ClientPrefs.flashing;
 
@@ -910,13 +920,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 
 					case 'Hide HUD':
 						ClientPrefs.hideHud = !ClientPrefs.hideHud;
-
-					case 'Persistent Cached Data':
-						ClientPrefs.imagesPersist = !ClientPrefs.imagesPersist;
-						FlxGraphic.defaultPersist = ClientPrefs.imagesPersist;
 					
-					case 'Hide Song Length':
-						ClientPrefs.hideTime = !ClientPrefs.hideTime;
 				}
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				reloadValues();
@@ -986,8 +990,6 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "If unchecked, hides FPS Counter.";
 			case 'Low Quality':
 				daText = "If checked, disables some background details,\ndecreases loading times and improves performance.";
-			case 'Persistent Cached Data':
-				daText = "If checked, images loaded will stay in memory\nuntil the game is closed, this increases memory usage,\nbut basically makes reloading times instant.";
 			case 'Anti-Aliasing':
 				daText = "If unchecked, disables anti-aliasing, increases performance\nat the cost of the graphics not looking as smooth.";
 			case 'Downscroll':
@@ -1002,14 +1004,14 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "If unchecked, you won't get disgusted as frequently.";
 			case 'Note Splashes':
 				daText = "If unchecked, hitting \"Sick!\" notes won't show particles.";
+			case 'Hue Change':
+				daText = "If checked, will change the hue of the stage to the color of the note that was hit.";
 			case 'Flashing Lights':
 				daText = "Uncheck this if you're sensitive to flashing lights!";
 			case 'Camera Zooms':
 				daText = "If unchecked, the camera won't zoom in on a beat hit.";
 			case 'Hide HUD':
 				daText = "If checked, hides most HUD elements.";
-			case 'Hide Song Length':
-				daText = "If checked, the bar showing how much time is left\nwill be hidden.";
 		}
 		descText.text = daText;
 
@@ -1062,6 +1064,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.globalAntialiasing;
 					case 'Note Splashes':
 						daValue = ClientPrefs.noteSplashes;
+					case 'Hue Change':
+						daValue = ClientPrefs.huechange;
 					case 'Flashing Lights':
 						daValue = ClientPrefs.flashing;
 					case 'Downscroll':
@@ -1078,10 +1082,6 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.camZooms;
 					case 'Hide HUD':
 						daValue = ClientPrefs.hideHud;
-					case 'Persistent Cached Data':
-						daValue = ClientPrefs.imagesPersist;
-					case 'Hide Song Length':
-						daValue = ClientPrefs.hideTime;
 				}
 				checkbox.daValue = daValue;
 			}
