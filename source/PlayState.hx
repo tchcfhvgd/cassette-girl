@@ -485,12 +485,16 @@ class PlayState extends MusicBeatState
 				add(street);
 
 			case 'cgstage':
-
+				CoolUtil.precacheSound('tapestuff');
+				CoolUtil.precacheSound('rewind');
+				CoolUtil.precacheSound('dah');
+				CoolUtil.precacheSound('city');
 				bganim = new FlxSprite();
 				bganim.screenCenter();
 				bganim.scale.set(1.25,1.25);
 				bganim.frames = Paths.getSparrowAtlas('weekcg/CGBG');
 				bganim.animation.addByPrefix('idle', 'new', 24,false);
+				bganim.antialiasing = true;
 				bganim.x -= 1250;
 				bganim.y -= 980;
 				add(bganim);
@@ -517,6 +521,8 @@ class PlayState extends MusicBeatState
 				coolboppers2 = new FlxSprite();
 				coolboppers2.scale.set(1.3,1.3);
 				coolboppers2.screenCenter();
+				coolboppers2.antialiasing = true;
+				coolboppers.antialiasing = true;
 				switch (songName)
 				{
 					case 'soda-groove':
@@ -776,7 +782,7 @@ class PlayState extends MusicBeatState
 
 		if (SONG.song == 'ukiyo' && isStoryMode)
 			{
-				dad.alpha =0;
+				dad.alpha =0.00001;
 			}
 
 		boyfriend = new Boyfriend(0, 0, SONG.player1);
@@ -797,9 +803,9 @@ class PlayState extends MusicBeatState
 			case 'cgstage':
 				c1 = new FlxSprite().loadGraphic(Paths.image('weekcg/BGLAYER'));
 				c1.screenCenter();
-				c1.antialiasing = ClientPrefs.globalAntialiasing;
+				c1.antialiasing = true;
 				c1.scale.set(5,5);
-				c1.alpha = 0;
+				c1.alpha = 0.00001;
 				c1.cameras = [camHUD];
 				if (SONG.song == 'machina' && isStoryMode)
 					c1.alpha = 1;
@@ -810,7 +816,7 @@ class PlayState extends MusicBeatState
 				blue.screenCenter();
 				blue.cameras = [camcolor];
 				blue.scale.set(0.81,0.81);
-				blue.antialiasing = ClientPrefs.globalAntialiasing;
+				blue.antialiasing = true;
 				blue.blend = BlendMode.OVERLAY;
 				add(blue);
 
@@ -818,7 +824,7 @@ class PlayState extends MusicBeatState
 				red.screenCenter();
 				red.cameras = [camcolor];
 				red.scale.set(0.81,0.81);
-				red.antialiasing = ClientPrefs.globalAntialiasing;
+				red.antialiasing = true;
 				red.blend = BlendMode.OVERLAY;
 				add(red);
 
@@ -826,7 +832,7 @@ class PlayState extends MusicBeatState
 				green.screenCenter();
 				green.cameras = [camcolor];
 				green.scale.set(0.81,0.81);
-				green.antialiasing = ClientPrefs.globalAntialiasing;
+				green.antialiasing = true;
 				green.blend = BlendMode.OVERLAY;
 				add(green);
 
@@ -834,20 +840,20 @@ class PlayState extends MusicBeatState
 				purple.screenCenter();
 				purple.cameras = [camcolor];
 				purple.scale.set(0.81,0.81);
-				purple.antialiasing = ClientPrefs.globalAntialiasing;
+				purple.antialiasing = true;
 				purple.blend = BlendMode.OVERLAY;
 				add(purple);
 
-				purple.alpha = 0;
-				green.alpha = 0;
-				red.alpha = 0;
-				blue.alpha = 0;
+				purple.alpha = 0.00001;
+				green.alpha = 0.00001;
+				red.alpha = 0.00001;
+				blue.alpha = 0.00001;
 
 				blue2 = new FlxSprite().loadGraphic(Paths.image('weekcg/DOWN LIGHT'));
 				blue2.screenCenter();
 				blue2.cameras = [camcolor];
 				blue2.scale.set(0.81,0.81);
-				blue2.antialiasing = ClientPrefs.globalAntialiasing;
+				blue2.antialiasing = true;
 				blue2.blend = BlendMode.OVERLAY;
 				add(blue2);
 
@@ -855,7 +861,7 @@ class PlayState extends MusicBeatState
 				red2.screenCenter();
 				red2.cameras = [camcolor];
 				red2.scale.set(0.81,0.81);
-				red2.antialiasing = ClientPrefs.globalAntialiasing;
+				red2.antialiasing = true;
 				red2.blend = BlendMode.OVERLAY;
 				add(red2);
 
@@ -863,7 +869,7 @@ class PlayState extends MusicBeatState
 				green2.screenCenter();
 				green2.cameras = [camcolor];
 				green2.scale.set(0.81,0.81);
-				green2.antialiasing = ClientPrefs.globalAntialiasing;
+				green2.antialiasing = true;
 				green2.blend = BlendMode.OVERLAY;
 				add(green2);
 
@@ -871,14 +877,14 @@ class PlayState extends MusicBeatState
 				purple2.screenCenter();
 				purple2.cameras = [camcolor];
 				purple2.scale.set(0.81,0.81);
-				purple2.antialiasing = ClientPrefs.globalAntialiasing;
+				purple2.antialiasing = true;
 				purple2.blend = BlendMode.OVERLAY;
 				add(purple2);
 
-				purple2.alpha = 0;
-				green2.alpha = 0;
-				red2.alpha = 0;
-				blue2.alpha = 0;
+				purple2.alpha = 0.00001;
+				green2.alpha = 0.00001;
+				red2.alpha = 0.00001;
+				blue2.alpha = 0.00001;
 		}
 
 		if (curStage == 'cgstage')
@@ -901,20 +907,20 @@ class PlayState extends MusicBeatState
 				aaaaa.animation.finishCallback = function(idle)
 					{
 						aaaaa.animation.play('idle2');
-						aaaaa.animation.finishCallback = function(idle)
+						aaaaa.animation.finishCallback = function(idle2)
 							{
 								aaaaa.animation.play('idle3');
-								aaaaa.animation.finishCallback = function(idle)
+								aaaaa.animation.finishCallback = function(idle3)
 									{
 										aaaaa.animation.play('idle4');
-										aaaaa.animation.finishCallback = function(idle)
+										aaaaa.animation.finishCallback = function(idle4)
 											{
 												aaaaa.animation.play('idle5');
 											}
 									}
 							}
 					}
-				aaaaa.alpha = 0;
+				aaaaa.alpha = 0.00001;
 				add(aaaaa);
 			}
 
@@ -922,7 +928,7 @@ class PlayState extends MusicBeatState
 		cg.frames = Paths.getSparrowAtlas('characters/cassettegirl-chill','shared');
 		cg.animation.addByPrefix('idle',"cassettegirl-chill",24,false);
 		cg.animation.play('idle');
-		cg.alpha = 0;
+		cg.alpha = 0.00001;
 		cg.antialiasing = true;
 		add(cg);
 
@@ -959,7 +965,7 @@ class PlayState extends MusicBeatState
 		timeBarBG.x = timeTxt.x;
 		timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
 		timeBarBG.scrollFactor.set();
-		timeBarBG.alpha = 0;
+		timeBarBG.alpha = 0.00001;
 		timeBarBG.visible = !ClientPrefs.hideTime;
 		timeBarBG.color = FlxColor.BLACK;
 		timeBarBG.xAdd = -4;
@@ -973,9 +979,9 @@ class PlayState extends MusicBeatState
 		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
 		if (SONG.song != 'machina' && isStoryMode)
 			{
-				timeBar.alpha = 0;
+				timeBar.alpha = 0.00001;
 				timeBar.visible = !ClientPrefs.hideTime;
-				timeTxt.alpha = 0;
+				timeTxt.alpha = 0.00001;
 				timeTxt.visible = !ClientPrefs.hideTime;
 				
 			}
@@ -985,9 +991,9 @@ class PlayState extends MusicBeatState
 			}
 		if (!isStoryMode)
 			{
-				timeBar.alpha = 0;
+				timeBar.alpha = 0.00001;
 				timeBar.visible = !ClientPrefs.hideTime;
-				timeTxt.alpha = 0;
+				timeTxt.alpha = 0.00001;
 				timeTxt.visible = !ClientPrefs.hideTime;
 				
 			}
@@ -1285,23 +1291,23 @@ class PlayState extends MusicBeatState
 				var cammovespeed:Float = 9;
 				if ((idk == 0) && (cammovex > -cammovemax))
 					{
-						trace('wentleft');
+						
 						cammovex -= cammovespeed;
 					}
 				else if ((idk == 3) && (cammovex < cammovemax))
 					{
 						cammovex += cammovespeed;
-						trace('wentright');
+						
 					}
 				else if ((idk == 1) && (cammovey < cammovemax))
 					{
 						cammovey += cammovespeed;
-						trace('wentdown');
+						
 					}
 				else if ((idk == 2) && (cammovey > -cammovemax))
 					{
 						cammovey -= cammovespeed;
-						trace('wentup');
+						
 					}*/
 		}
 
@@ -2702,19 +2708,19 @@ class PlayState extends MusicBeatState
 							case 0:
 								animToPlay = 'singLEFT';
 								movecamstrum(0, false);
-								trace('wentleft');
+								
 							case 1:
 								animToPlay = 'singDOWN';
 								movecamstrum(1, false);
-								trace('wentdown');
+								
 							case 2:
 								animToPlay = 'singUP';
 								movecamstrum(2, false);
-								trace('wentup');
+								
 							case 3:
 								animToPlay = 'singRIGHT';
 								movecamstrum(3, false);
-								trace('wentright');
+								
 						}
 						if(daNote.noteType == 'GF Sing') {
 							gf.playAnim(animToPlay + altAnim, true);
@@ -3335,7 +3341,7 @@ class PlayState extends MusicBeatState
 					//trace(camFollow.x + 'this x');
 				},0);
 
-				dad.alpha = 0;
+				dad.alpha = 0.00001;
 				cg.alpha = 1;
 				cg.animation.play('idle');
 				cg.animation.finishCallback = function(idle)
@@ -4076,19 +4082,19 @@ class PlayState extends MusicBeatState
 					case 0:
 						animToPlay = 'singLEFT';
 						movecamstrum(0, true);
-						trace('wentleft');
+						
 					case 1:
 						animToPlay = 'singDOWN';
 						movecamstrum(1, true);
-						trace('wentdown');
+						
 					case 2:
 						animToPlay = 'singUP';
 						movecamstrum(2, true);
-						trace('wentup');
+						
 					case 3:
 						animToPlay = 'singRIGHT';
 						movecamstrum(3, true);
-						trace('wentright');
+						
 				}
 
 				if(note.noteType == 'GF Sing') {

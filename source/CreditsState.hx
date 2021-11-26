@@ -26,7 +26,7 @@ class CreditsState extends MusicBeatState
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
 		['Mod Creators'],
 		['Mong',		'MONG',		'Artist and Animator',					'https://twitter.com/spacedoggo_art',	0xFF6699ff],
-		['Saruky',			'SARUKY',		'Composer',				'https://twitter.com/Saruky',		0xFFf44771],
+		['Saruky',			'SARUKY',		'Composer',				'https://twitter.com/Saruky__',		0xFFf44771],
 		['Chromaatical',		'Chorma',		'Charter',					'https://twitter.com/Chromaatical',	0xFFcc6666],
 		['Shadowfi',			'SHADOWFI',		'Programmer',				'https://twitter.com/Shadowfi1385',		0xFFc356ff],
 		[''],
@@ -112,8 +112,8 @@ class CreditsState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
-		backdrops.x+=2;
-		backdrops.y +=2;
+		backdrops.x+=90* elapsed;
+		backdrops.y +=90* elapsed;
 		backdrops.color = bg.color;
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;

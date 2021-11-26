@@ -77,8 +77,8 @@ class OptionsState extends MusicBeatState
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
-		backdrops.x-=2;
-		backdrops.y -=2;
+		backdrops.x-=90* elapsed;
+		backdrops.y -=90* elapsed;
 		backdrops.color = FlxColor.RED;
 		if (controls.UI_UP_P) {
 			changeSelection(-1);

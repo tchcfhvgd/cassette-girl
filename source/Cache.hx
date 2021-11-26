@@ -10,6 +10,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxPoint;
 import flixel.util.FlxTimer;
 import flixel.text.FlxText;
+import flixel.system.FlxSound;
 import lime.app.Application;
 #if windows
 import Discord.DiscordClient;
@@ -109,7 +110,26 @@ class Cache extends MusicBeatState
 	function cache()
 	{
 		#if !linux
+			var aaa:FlxSprite;
+			aaa = new FlxSprite();
+			aaa.frames = Paths.getSparrowAtlas('characters/cassettegirl-st','shared');
+			aaa.animation.addByPrefix('idle',"cassettegirl cut",22,false);
+			aaa.animation.play('idle');
+			aaa.antialiasing = true;
+			aaa.alpha = 0.00001;
+			add(aaa);
 
+			var sound1:FlxSound;
+			sound1 = new FlxSound().loadEmbedded(Paths.voices('machina'));
+			sound1.play();
+			sound1.volume = 0.00001;
+			FlxG.sound.list.add(sound1);
+
+			var sound2:FlxSound;
+			sound2 = new FlxSound().loadEmbedded(Paths.inst('machina'));
+			sound2.play();
+			sound2.volume = 0.00001;
+			FlxG.sound.list.add(sound2);
 		for (i in images)
 		{
 			var replaced = i.replace(".png","");
@@ -118,6 +138,7 @@ class Cache extends MusicBeatState
 			graph.persist = true;
 			graph.destroyOnNoUse = false;
 			bitmapData.set(replaced,graph);
+			trace(i);
 		}
 
 		for (i in images2)
@@ -128,10 +149,14 @@ class Cache extends MusicBeatState
 				graph2.persist = true;
 				graph2.destroyOnNoUse = false;
 				bitmapData2.set(replaced2,graph2);
+				trace(i);
 			}
+
+
 
 		for (i in music)
 		{
+			trace(i);
 			FlxG.sound.cache(Paths.inst(i));
 			FlxG.sound.cache(Paths.voices(i));
 		}
