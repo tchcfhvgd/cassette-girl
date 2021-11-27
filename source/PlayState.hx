@@ -1003,6 +1003,7 @@ class PlayState extends MusicBeatState
 			}
 		if (SONG.song == 'machina' && isStoryMode)
 			{
+				camZooming = false;
 				timeTxt.text = FlxStringUtil.formatTime(121, false);
 			}
 		if (!isStoryMode)
@@ -1616,7 +1617,12 @@ class PlayState extends MusicBeatState
 						});
 					FlxTween.tween(FlxG.camera, {zoom: 0.7}, (Conductor.stepCrochet * 16 / 1000), {ease: FlxEase.quadInOut});
 					FlxTween.tween(camFollow, {y: 577.5}, (Conductor.stepCrochet * 16 / 1000), {ease: FlxEase.quadInOut});
-					FlxTween.tween(camFollow, {x: 483.5}, (Conductor.stepCrochet * 16 / 1000), {ease: FlxEase.quadInOut});
+					FlxTween.tween(camFollow, {x: 483.5}, (Conductor.stepCrochet * 16 / 1000), {ease: FlxEase.quadInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							camZooming = true;
+						}
+					});
 					swagCounter = 5;
 				}
 
