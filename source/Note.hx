@@ -48,6 +48,7 @@ class Note extends FlxSprite
 	public var noteSplashHue:Float = 0;
 	public var noteSplashSat:Float = 0;
 	public var noteSplashBrt:Float = 0;
+	public var aaaidk:Float = 0;
 
 	public var offsetX:Float = 0;
 	public var offsetY:Float = 0;
