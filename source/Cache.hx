@@ -12,7 +12,7 @@ import flixel.util.FlxTimer;
 import flixel.text.FlxText;
 import flixel.system.FlxSound;
 import lime.app.Application;
-#if windows
+#if desktop
 import Discord.DiscordClient;
 #end
 import openfl.display.BitmapData;
@@ -21,7 +21,7 @@ import haxe.Exception;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
-#if cpp
+#if sys
 import sys.FileSystem;
 import sys.io.File;
 #end
@@ -109,7 +109,6 @@ class Cache extends MusicBeatState
 
 	function cache()
 	{
-		#if !linux
 			var aaa:FlxSprite;
 			aaa = new FlxSprite();
 			aaa.frames = Paths.getSparrowAtlas('characters/cassettegirl-st','shared');
@@ -162,7 +161,6 @@ class Cache extends MusicBeatState
 		}
 
 
-		#end
 		FlxG.switchState(new TitleState());
 	}
 
