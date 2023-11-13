@@ -300,6 +300,7 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		Paths.clearStoredMemory();
 		#if MODS_ALLOWED
 		Paths.destroyLoadedImages(resetSpriteCache);
 		#end
@@ -1299,6 +1300,8 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
 		#end
+		
+		Paths.clearUnusedMemory();
 		super.create();
 	}
 
