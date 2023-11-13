@@ -6,12 +6,12 @@ import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
 import lime.utils.Assets;
 import flixel.FlxSprite;
-#if MODS_ALLOWED
+#if sys
 import sys.io.File;
 import sys.FileSystem;
+#end
 import flixel.graphics.FlxGraphic;
 import openfl.display.BitmapData;
-#end
 
 import flash.media.Sound;
 
@@ -81,7 +81,10 @@ class Paths
 		'assets/shared/music/tea-time.$SOUND_EXT',
 	];
 	
-	public static function clearUnusedMemory() {
+	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
+	public static var currentTrackedSounds:Map<String, Sound> = [];
+	
+        public static function clearUnusedMemory() {
 		// clear non local assets in the tracked assets list
 		for (key in currentTrackedAssets.keys()) {
 			// if it is not currently contained within the used local assets
