@@ -59,21 +59,21 @@ class Cache extends MusicBeatState
 		changetext();
 
 		#if cpp
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/characters")))
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath(SUtil.getPath() + "assets/shared/images/characters")))
 		{
 			if (!i.endsWith(".png"))
 				continue;
 			images.push(i);
 		}
 
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/weekcg")))
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath(SUtil.getPath() + "assets/shared/images/weekcg")))
 			{
 				if (!i.endsWith(".png"))
 					continue;
 				images2.push(i);
 			}
 
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/songs")))
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath(SUtil.getPath() + "assets/songs")))
 		{
 			music.push(i);
 		}
@@ -132,7 +132,7 @@ class Cache extends MusicBeatState
 		for (i in images)
 		{
 			var replaced = i.replace(".png","");
-			var data:BitmapData = BitmapData.fromFile("assets/shared/images/characters/" + i);
+			var data:BitmapData = BitmapData.fromFile(SUtil.getPath() + "assets/shared/images/characters/" + i);
 			var graph = FlxGraphic.fromBitmapData(data);
 			graph.persist = true;
 			graph.destroyOnNoUse = false;
@@ -143,7 +143,7 @@ class Cache extends MusicBeatState
 		for (i in images2)
 			{
 				var replaced2 = i.replace(".png","");
-				var data2:BitmapData = BitmapData.fromFile("assets/shared/images/weekcg/" + i);
+				var data2:BitmapData = BitmapData.fromFile(SUtil.getPath() + "assets/shared/images/weekcg/" + i);
 				var graph2 = FlxGraphic.fromBitmapData(data2);
 				graph2.persist = true;
 				graph2.destroyOnNoUse = false;
