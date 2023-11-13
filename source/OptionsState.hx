@@ -39,6 +39,9 @@ class OptionsState extends MusicBeatState
 	var backdrops:FlxBackdrop = new FlxBackdrop(Paths.image('backdrop2'), 0.2, 0.2, true, true);
 
 	override function create() {
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+		
 		#if desktop
 		DiscordClient.changePresence("Options Menu", null);
 		#end
