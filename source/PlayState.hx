@@ -1301,9 +1301,9 @@ class PlayState extends MusicBeatState
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
 		#end
 		
-		Paths.clearUnusedMemory();
 		super.create();
-	}
+	        Paths.clearUnusedMemory();
+     }
 
 	private function movecamstrum(idk:Int, mustHit:Bool)
 		{/*
